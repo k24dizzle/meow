@@ -1,0 +1,40 @@
+.teams {
+	text-align:center;
+	color: orange;
+	font-family: 'Open Sans', sans-serif;
+	font-size:50px;
+}
+.date {
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;
+	font-size:27px;
+	padding-bottom: 20px;
+}
+.score {
+	text-align: center;
+
+}
+.what {
+		display:inline-block;
+}
+.win {
+
+	font-family: 'Open Sans', sans-serif;
+	font-size: 50px;
+	display:inline-block;
+	color:rgb(0, 102, 0);
+
+
+}
+.lose {
+
+	font-family: 'Open Sans', sans-serif;
+	font-size: 50px;
+	display:inline-block;
+	color:rgb(183, 20, 20);
+
+}
+#right {
+
+	padding-right: 120px;
+}

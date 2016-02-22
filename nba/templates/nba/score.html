@@ -1,0 +1,30 @@
+{% load staticfiles %}
+{% load nba_teams %}
+{% with winner=game.home_Score|win:game.away_Score %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" href="{% static 'css/score.css' %}">
+
+</head>
+<body>
+<h1 class ="teams">
+<a href = "/team/{{ game.home_Team }}"> {{ game.home_Team }} </a> vs. <a href = "/team/{{ game.away_Team }}"> {{ game.away_Team }} </a>
+
+</h1>
+<h2 class = "date"> {{ game.date }} </h2>
+{% if winner %}
+<div class = "score">
+<p class = "win" id = "right">{{ game.home_Score }}</p>  
+<p class = "lose">{{ game.away_Score }}</p>
+</div>
+{% else %}
+<div class = "score">
+<p class = "lose" id = "right"> {{ game.home_Score }}</p>      
+<p class = "win">{{ game.away_Score }}</p> 
+</div>
+{% endif %}
+</body>
+</html> 
+{% endwith %}

@@ -1,0 +1,31 @@
+{% load staticfiles %}
+{% load nba_teams %}
+<!DOCTYPE html>
+<html>
+     <head>
+       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
+        <link rel="stylesheet" href="{% static 'css/nba.css' %}">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <title> {{ team|teamName }} </title>
+      
+    </head>
+<body>
+<h1> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
+<h3> Past Games </h3> 
+
+<div class = "col-sm-4">
+{% for game in games %}
+<div>
+    <h2> <a href = "/score/{{ game.id }}/"> {{ game.home_Team }} {{ game.away_Team}} </a></h2>
+    <p> {{ game.date }} </p>
+    <p> {{ game.home_Score }}-{{ game.away_Score }} </p>
+    </div>
+{% endfor %}
+</div>
+
+
+</body>
+
+</html>
+
