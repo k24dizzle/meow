@@ -16,9 +16,14 @@ def score(request, game_id):
     return render(request, 'nba/score.html', {'game': game})
 
 def team(request, team):
-    games = nba.objects.filter(Q(home_Team=team) | Q(away_Team=team)).filter(date__lte=timezone.now()).order_by('-date')
-    test = calcRecord(games, team)
-    winStreak = calcStreak(games, team)
+    try:
+        game = nba.objects.get(home_Team=team)
+    except nba.DoesNotExist:
+        raise Http404("Team does not exist")
+
+        games = nba.objects.filter(Q(home_Team=team) | Q(away_Team=team)).filter(date__lte=timezone.now()).order_by('-date')
+        test = calcRecord(games, team)
+        winStreak = calcStreak(games, team)
     return render(request, 'nba/team.html', {'games': games, 'team': team, 'wins': test[0], 'losses': test[1], 'streak': winStreak}) 
 
 def maps(request, team):

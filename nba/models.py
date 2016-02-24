@@ -84,4 +84,8 @@ class nba(models.Model):
 
     def __str__(self):  
         return self.home_Team + ' vs ' + self.away_Team + ': ' + str(self.date)
+    
+    def inFuture(self):
+        now = timezone.now()
+        return self.date <= now.date()
 # Create your models here. the name of the URL that will be used to identify the view. This can be the same as the name of the view but it can also be something
