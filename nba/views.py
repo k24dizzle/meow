@@ -18,7 +18,7 @@ def score(request, game_id):
 def team(request, team):
     try:
         game = nba.objects.get(home_Team=team)
-    except nba.DoesNotExist:
+    except:
         raise Http404("Team does not exist")
 
         games = nba.objects.filter(Q(home_Team=team) | Q(away_Team=team)).filter(date__lte=timezone.now()).order_by('-date')
@@ -41,7 +41,8 @@ def calcRecord(games, team):
                 win += 1
             else: 
                 loss += 1
-        else:
+        else:    print team
+
             if game.away_Score > game.home_Score:
                 win += 1
             else:
