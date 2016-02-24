@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load nba_teams %}
-{% load mathfilters %}
+
 <!DOCTYPE html>
 <html>
      <head>
@@ -14,11 +14,7 @@
 <body>
 <h1> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
 <h2> {{ wins }} - {{ losses }} </h2>
-{% if streak < 0 %}
-<h2> Lost {{ streak|mul:-1}} </h2>
-{% else %}
-<h2> Won {{ streak }} </h2>
-{% endif %}
+<h2> {{ streak }} </h2>
 <h3> Past Games </h3> 
 
 <div class = "col-sm-4">

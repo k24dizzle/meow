@@ -4,6 +4,7 @@ from django.http import Http404
 from .models import nba
 from django.http import HttpResponse
 from django.db.models import Q
+from .templatetags import nba_teams
 def nba_list(request):
     games = nba.objects.filter(date__lte=timezone.now()).order_by('-date')
     return render(request, 'nba/nba_list.html', {'games': games})
@@ -15,16 +16,16 @@ def score(request, game_id):
        raise Http404("Game does not exist") 
     return render(request, 'nba/score.html', {'game': game})
 
-def team(request, team):
+def team(request, team): 
     try:
-        game = nba.objects.get(home_Team=team)
+        nba_teams.teamName(team)
     except:
-        raise Http404("Team does not exist")
+        raise Http404("Team does not exist: " + team)
+    games2 = nba.objects.filter(Q(home_Team=team) | Q(away_Team=team)).filter(date__lte=timezone.now()).order_by('-date')
+    test = calcRecord(games2, team)
+    winStreak = calcStreak(games2, team)
 
-        games = nba.objects.filter(Q(home_Team=team) | Q(away_Team=team)).filter(date__lte=timezone.now()).order_by('-date')
-        test = calcRecord(games, team)
-        winStreak = calcStreak(games, team)
-    return render(request, 'nba/team.html', {'games': games, 'team': team, 'wins': test[0], 'losses': test[1], 'streak': winStreak}) 
+    return render(request, 'nba/team.html', {'games': games2, 'team': team, 'wins': test[0], 'losses': test[1], 'streak': winStreak}) 
 
 def maps(request, team):
     return render(request, 'nba/map.html', {'team': team})
@@ -41,7 +42,7 @@ def calcRecord(games, team):
                 win += 1
             else: 
                 loss += 1
-        else:    print team
+        else:    
 
             if game.away_Score > game.home_Score:
                 win += 1
@@ -74,4 +75,7 @@ def calcStreak(games, team):
                     return streak
                 else:
                     streak -= 1
-    return streak
+    if (streak < 0):
+        return "Lost " + str(streak * -1)
+    else:
+        return "Won " + str(streak)
