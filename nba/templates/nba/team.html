@@ -6,26 +6,35 @@
      <head>
        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> 
-        <link rel="stylesheet" href="{% static 'css/nba.css' %}">
+        <link rel="stylesheet" href="{% static 'css/team.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <title> {{ team|teamName }} </title>
       
     </head>
 <body>
-<h1> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
-<h2> {{ wins }} - {{ losses }} </h2>
-<h2> {{ streak }} </h2>
-<h3> Past Games </h3> 
-
+<h1 class = "team"> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
+<h2 class = "record"> {{ wins }} - {{ losses }} </h2>
+<h2 id = "streak"> {{ streak }} </h2>
+<div class = "continer">
 <div class = "col-sm-4">
+<h3 class = "head" > Past Games </h3> 
 {% for game in games %}
-<div>
+<div class = "game">
     <h2> <a href = "/score/{{ game.id }}/"> {{ game.home_Team }} {{ game.away_Team}} </a></h2>
     <p> {{ game.date }} </p>
     <p> {{ game.home_Score }}-{{ game.away_Score }} </p>
     </div>
 {% endfor %}
 </div>
+<div class = "col-sm-8" >
+<h1 id = "statistics"> Statistics </h1>
+<h3 id = "eff"> Offensive Efficiency {{ offEff }} </h2>
+<h3 id = "eff"> Defensive Efficiency {{ defEff }} </h2>
+
+
+</div>
+</div>
+
 
 
 </body>

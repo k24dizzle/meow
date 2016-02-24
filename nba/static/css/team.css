@@ -1,0 +1,18 @@
+h3, h2, h1, p, a {
+    font-family: 'Open-Sans', sans-serif;
+}
+#statistics {
+	text-align:center;
+}
+.game {
+	border-width: 1px;
+	border-style: solid;
+	text-align:center;
+}
+#eff {
+	align-items: center;
+	font-size:20px;
+}
+.record, .head, .team, #streak {
+	text-align:center;
+}
