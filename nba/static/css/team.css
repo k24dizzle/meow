@@ -13,6 +13,21 @@ h3, h2, h1, p, a {
 	align-items: center;
 	font-size:20px;
 }
-.record, .head, .team, #streak {
+.record, .head, .team, #winstreak, #losestreak {
 	text-align:center;
+}
+#winstreak {
+	color:rgb(0, 102, 0);
+}
+#losestreak {
+	color:rgb(183, 20, 20);
+}
+.team {
+	font-size:55px;
+}
+.record {
+	font-size:45px;
+}
+.head {
+	font-size:36px;
 }

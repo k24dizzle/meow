@@ -3,6 +3,13 @@ register = template.Library()
 
 #$ def (value, arg):
 # var|foo:"bar"    var is the variable/value, bar is the arg
+@register.filter(name='streakBoo')
+def streakBoo(value):
+    if (value[0] == 'W'):
+        return True
+    else:
+        return False
+
 @register.filter(name='win')
 def win(value, args):
     if (value > args):

@@ -14,7 +14,11 @@
 <body>
 <h1 class = "team"> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
 <h2 class = "record"> {{ wins }} - {{ losses }} </h2>
-<h2 id = "streak"> {{ streak }} </h2>
+{% if streak|streakBoo %}
+<h2 id = "winstreak"> {{ streak }} </h2>
+{% else %}
+<h2 id = "losestreak"> {{ streak }} </h2>
+{% endif %}
 <div class = "continer">
 <div class = "col-sm-4">
 <h3 class = "head" > Past Games </h3> 
