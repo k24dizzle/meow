@@ -5,6 +5,7 @@ from .models import nba
 from django.http import HttpResponse
 from django.db.models import Q
 from .templatetags import nba_teams
+
 def nba_list(request):
     games = nba.objects.filter(date__lte=timezone.now()).order_by('-date')
     return render(request, 'nba/nba_list.html', {'games': games})
@@ -28,7 +29,7 @@ def team(request, team):
     return render(request, 'nba/team.html', {'games': games2, 'team': team, 'wins': test[0], 'losses': test[1], 'streak': winStreak, 'offEff': eff[0], 'defEff': eff[1]}) 
 
 def maps(request, team):
-    return render(request, 'nba/map.html', {'team': team})
+    return render(request, 'nba/map.html', {'team': nba_teams.teamName(team), 'address': nba_teams.getAddress(team)})
 
 
 #calculates a team's record based on "games" and the teams name (to help identify if
