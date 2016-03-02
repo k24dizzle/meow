@@ -26,7 +26,7 @@ def getAddress(value):
     "CHA": '333 E Trade St, Charlotte, NC 28202',
     "CHI": '1901 W Madison St, Chicago, IL 60612',
     "CLE": '1 Center Ct, Cleveland, OH 44115',
-    "DAL": '2500 Victory TemplateSyntaxError atCould not parse the remainder: Ave, Dallas, TX 75219',
+    "DAL": '2500 Victory Ave, Dallas, TX 75219',
     "DEN": '1000 Chopper Cir, Denver, CO 80204',
     "DET": '6 Championship Dr, Auburn Hills, MI 48326',
     "GS": '7000 Coliseum Way, Oakland, CA 94621',
