@@ -9,8 +9,9 @@
         <link rel="stylesheet" href="{% static 'css/team.css' %}">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <title> {{ team|teamName }} </title>
-        <script src="{% static 'js/jquery.js' %}"> </script>
-        <script src="{% static 'js/ajax.js' %}"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script type="text/javascript" src="{% static 'js/test.js' %}"> </script>
     </head>
 <body>
 <h1 class = "team"> <a href = "/{{ team }}map/">  {{ team|teamName }} </a> </h1>
@@ -36,11 +37,12 @@
 <h3 id = "eff"> Points Per Game: (PPG) {{ offEff }} </h2>
 <h3 id = "eff"> Opponent's Points Per Game: (OPPG) {{ defEff }} </h2>
 <button type="button" id = "calculate" class="btn btn-success" >Calculate Stats</button>
-
+<p id="demo">Kevin Was here</p>
 </div>
 </div>
 
-
+<script>
+</script>
 
 </body>
 
